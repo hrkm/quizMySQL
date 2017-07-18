@@ -1,0 +1,4 @@
+quizMySQL.MainActivity, quizMySQL;md58cea07943ff5d528678ffe942de20db1.MainActivity
+quizMySQL.MainActivity, quizMySQL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md58cea07943ff5d528678ffe942de20db1.MainActivity
+quizMySQL.MainActivity;md58cea07943ff5d528678ffe942de20db1.MainActivity
+quizmysql.MainActivity;md58cea07943ff5d528678ffe942de20db1.MainActivity
