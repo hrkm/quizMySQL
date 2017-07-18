@@ -12,7 +12,7 @@ using Android.Widget;
 using MySql.Data.MySqlClient;
 using System.Data;
 
-namespace Quiz.DataBase
+namespace quizMySQL.DataBase
 {
     public class dbManager
     {

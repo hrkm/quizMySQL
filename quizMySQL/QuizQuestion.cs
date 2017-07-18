@@ -9,10 +9,10 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Quiz.DataBase;
+using quizMySQL.DataBase;
 using MySql.Data.MySqlClient;
 
-namespace Quiz
+namespace quizMySQL
 {
     class QuizQuestion
     {

@@ -9,8 +9,8 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System;
-using Quiz.DataBase;
-using Quiz;
+using quizMySQL.DataBase;
+
 
 namespace quizMySQL
 {
@@ -20,6 +20,7 @@ namespace quizMySQL
         dbManager database;
         QuizGame game;
         QuizQuestion qq;
+        TextView questionNoTxt;
         TextView question;
         Button buttonA;
         Button buttonB;
@@ -36,14 +37,18 @@ namespace quizMySQL
             game.populatingQuestionList();
             assignViewToVar();
             refreshQuestionPage();
+            buttonA.Click += delegate { btn1Click(); };
             buttonB.Click += delegate { btn2Click(); };
+            buttonC.Click += delegate { btn3Click(); };
+            buttonD.Click += delegate { btn4Click(); };
         }
-        private void refreshQuestionPage()
+        public void refreshQuestionPage()
         {
             assignValToVar(game.currentQuestion);
         }
         private void assignViewToVar()
         {
+            questionNoTxt = FindViewById<TextView>(Resource.Id.textView2);
             question = FindViewById<TextView>(Resource.Id.textView1);
             buttonA = FindViewById<Button>(Resource.Id.button1);
             buttonB = FindViewById<Button>(Resource.Id.button2);
@@ -52,6 +57,7 @@ namespace quizMySQL
         }
         private void assignValToVar(int questionNumber)
         {
+            questionNoTxt.Text = game.updateCurrentQuestionTxt();
             question.Text = game.getQuestion(questionNumber).question;
             buttonA.Text = game.getQuestion(questionNumber).answerA;
             buttonB.Text = game.getQuestion(questionNumber).answerB;
@@ -59,16 +65,31 @@ namespace quizMySQL
             buttonD.Text = game.getQuestion(questionNumber).answerD;
 
         }
-        public void btn2Click()
+        private void btn1Click()
+        {   //Checking if A is correct
+            if(game.checkClick("A"))
+            {
+                //Increment general points
+                game.incrementPoints();
+                //IF this was last question
+                if(game.amountOfQuestions == game.currentQuestion)
+                {
+                    //Show the dialog box
+                    //Restart Quiz
+                    endOfQuiz();
+                    refreshQuestionPage();
+                }
+            }
+        }
+        private void btn2Click()
         {
-            if (game.getQuestion(game.currentQuestion).corrAnswer == "B")
+            if(game.checkClick("B"))
             {
                 game.incrementPoints();
-                if (game.currentQuestion == game.amountOfQuestions)
+                if (game.amountOfQuestions == game.currentQuestion)
                 {
-                    //game.returnFinalResult();
-                    throw new NotImplementedException("YOU WON");
-                    //funtion that displays YOU WON!
+                    endOfQuiz();
+                    
                 }
                 else
                 {
@@ -76,6 +97,27 @@ namespace quizMySQL
                     refreshQuestionPage();
                 }
             }
+        }
+        private void btn3Click()
+        {
+            game.checkClick("C");
+        }
+        private void btn4Click()
+        {
+            game.checkClick("D");
+        }
+        public void endOfQuiz()
+        {
+            //creating alter dialog
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.SetTitle("End of Quiz");
+            builder.SetMessage("Your score is " + game.returnFinalResult());
+            builder.SetNeutralButton("Ok", delegate
+            {
+                game.restartQuiz();
+                refreshQuestionPage();
+            });
+            builder.Show();
         }
         //Testing function, to be called once.
         private void addToDB()

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 using Android.App;
 using Android.Content;
@@ -9,9 +10,9 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Quiz.DataBase;
+using quizMySQL.DataBase;
 
-namespace Quiz
+namespace quizMySQL
 {
     class QuizGame
     {
@@ -43,6 +44,23 @@ namespace Quiz
                 }
             }
         }
+        public bool checkClick(string letter)
+        {
+            //If clicked answer is correct
+            if (getQuestion(currentQuestion).corrAnswer == letter)
+            {
+                return true;
+            }
+            //If clicked answer is not correct
+            else if (getQuestion(currentQuestion).corrAnswer != letter)
+            {
+                return false;
+            }
+            else
+            {
+                throw new NotImplementedException("button " + letter + " click");
+            }
+        }
         public QuizQuestion getQuestion(int i)
         {
             return questionList[i];
@@ -55,9 +73,18 @@ namespace Quiz
         {
             points++;
         }
+        public string updateCurrentQuestionTxt()
+        {
+            return "Question " + currentQuestion + " out of " + amountOfQuestions;
+        }
         public int returnFinalResult()
         {
             return points;
+        }
+        public void restartQuiz()
+        {
+            currentQuestion = 1;
+            populatingQuestionList();
         }
     }
 }
