@@ -28,20 +28,27 @@ namespace quizMySQL
             database = new dbManager("Server=10.0.2.2;Database=quiz;Uid=root;Allow User Variables=True;");
             questionList = new List<QuizQuestion>();
             amountOfQuestions = 8;
-            currentQuestion = 1;
+            currentQuestion = 0;
             populatingQuestionList();
         }
         public void populatingQuestionList()
         {
+            //Making sure the list is empty
+            questionList.Clear();
             for (int i = 0; i < amountOfQuestions; i++)
             {
+                //picking  random question from database
                 var qq = new QuizQuestion(database.findRndQuestion().ExecuteReader());
+                //checking if the same question exists in question list
                 bool match = questionList.Any(x => x.ID == qq.ID);
-                while (!match)
+                //if exists pick another
+                while (match)
                 {
-                    questionList.Add(qq);
-                    break;
+                    qq = new QuizQuestion(database.findRndQuestion().ExecuteReader());
+                    match = questionList.Any(x => x.ID == qq.ID);
                 }
+                //add to question list
+                questionList.Add(qq);
             }
         }
         public bool checkClick(string letter)
@@ -52,13 +59,9 @@ namespace quizMySQL
                 return true;
             }
             //If clicked answer is not correct
-            else if (getQuestion(currentQuestion).corrAnswer != letter)
-            {
-                return false;
-            }
             else
             {
-                throw new NotImplementedException("button " + letter + " click");
+                return false;
             }
         }
         public QuizQuestion getQuestion(int i)
@@ -75,7 +78,7 @@ namespace quizMySQL
         }
         public string updateCurrentQuestionTxt()
         {
-            return "Question " + currentQuestion + " out of " + amountOfQuestions;
+            return "Question " + (currentQuestion + 1) + " out of " + amountOfQuestions;
         }
         public int returnFinalResult()
         {
@@ -83,7 +86,7 @@ namespace quizMySQL
         }
         public void restartQuiz()
         {
-            currentQuestion = 1;
+            currentQuestion = 0;
             populatingQuestionList();
         }
     }
