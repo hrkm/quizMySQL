@@ -5,12 +5,14 @@
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <application android:label="quizMySQL" android:name="android.app.Application" android:allowBackup="true" android:icon="@drawable/icon" android:debuggable="true">
-    <activity android:icon="@drawable/icon" android:label="quizMySQL" android:name="md58cea07943ff5d528678ffe942de20db1.MainActivity">
+    <activity android:icon="@drawable/icon" android:label="GameActivity" android:name="md58cea07943ff5d528678ffe942de20db1.GameActivity" />
+    <activity android:icon="@drawable/icon" android:label="quizMySQL" android:name="md58cea07943ff5d528678ffe942de20db1.MainPageActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+    <activity android:label="ResultActivity" android:name="md58cea07943ff5d528678ffe942de20db1.ResultActivity" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="quizMySQL.quizMySQL.mono.MonoRuntimeProvider.__mono_init__" />
     <!--suppress ExportedReceiver-->
     <receiver android:name="mono.android.Seppuku">

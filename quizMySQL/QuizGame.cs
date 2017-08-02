@@ -17,7 +17,7 @@ namespace quizMySQL
     class QuizGame
     {
         List<QuizQuestion> questionList;
-        public dbManager database { get; set; }
+        public DbManager database { get; set; }
         public int amountOfQuestions { get; set; }
         public int currentQuestion { get; set; }
         public int points { get; set; }
@@ -25,13 +25,11 @@ namespace quizMySQL
 
         public QuizGame()
         {
-            database = new dbManager("Server=10.0.2.2;Database=quiz;Uid=root;Allow User Variables=True;");
             questionList = new List<QuizQuestion>();
             amountOfQuestions = 8;
             currentQuestion = 0;
-            populatingQuestionList();
         }
-        public void populatingQuestionList()
+        public void populatingQuestionList(DbManager database)
         {
             //Making sure the list is empty
             questionList.Clear();
@@ -84,10 +82,10 @@ namespace quizMySQL
         {
             return points;
         }
-        public void restartQuiz()
+        public void restartQuiz(DbManager database)
         {
             currentQuestion = 0;
-            populatingQuestionList();
+            populatingQuestionList(database);
         }
     }
 }

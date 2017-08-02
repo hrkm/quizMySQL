@@ -29,9 +29,6 @@ namespace quizMySQL
             {
                 reader.Read();
             }
-
-            //reader.Read();
-
             ID = Convert.ToInt32(reader.GetValue(0));
             question = reader.GetValue(1).ToString();
             answerA = reader.GetValue(2).ToString();

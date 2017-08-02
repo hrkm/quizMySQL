@@ -100,6 +100,7 @@ class MonoPackageManager_Resources {
 		/* We need to ensure that "quizMySQL.dll" comes first in this list. */
 		"quizMySQL.dll",
 		"MySql.Data.CF.dll",
+		"Newtonsoft.Json.dll",
 	};
 	public static final String[] Dependencies = new String[]{
 	};

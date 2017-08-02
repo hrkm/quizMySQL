@@ -9,6 +9,7 @@ E:\Projekty\quizMySQL\quizMySQL\obj\Debug\android\assets\System.dll
 E:\Projekty\quizMySQL\quizMySQL\obj\Debug\android\assets\System.Xml.dll
 E:\Projekty\quizMySQL\quizMySQL\obj\Debug\android\assets\System.Xml.Linq.dll
 E:\Projekty\quizMySQL\quizMySQL\obj\Debug\android\assets\MySql.Data.CF.dll
+E:\Projekty\quizMySQL\quizMySQL\obj\Debug\android\assets\Newtonsoft.Json.dll
 E:\Projekty\quizMySQL\quizMySQL\obj\Debug\android\assets\System.Runtime.dll
 E:\Projekty\quizMySQL\quizMySQL\obj\Debug\android\assets\System.ComponentModel.Composition.dll
 E:\Projekty\quizMySQL\quizMySQL\obj\Debug\android\assets\System.Threading.dll

@@ -14,11 +14,11 @@ using System.Data;
 
 namespace quizMySQL.DataBase
 {
-    public class dbManager
+    public class DbManager
     {
         public MySqlCommand cmd { get; set; }
         public MySqlConnection con { get; set; }
-        public dbManager(string dbInfo)
+        public DbManager(string dbInfo)
         {
             //Connecting to database
             con = new MySqlConnection(dbInfo);
