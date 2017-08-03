@@ -11,7 +11,7 @@
 
 [assembly: global::Android.Runtime.ResourceDesignerAttribute("quizMySQL.Resource", IsApplication=true)]
 
-namespace quizMySQL
+namespace QuizMySQL
 {
 	
 	

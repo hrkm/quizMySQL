@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using quizMySQL.DataBase;
+using QuizMySQL.DataBase;
 
-namespace quizMySQL
+namespace QuizMySQL
 {
     class QuizGame
     {
@@ -29,6 +28,7 @@ namespace quizMySQL
             amountOfQuestions = 8;
             currentQuestion = 0;
         }
+
         public void populatingQuestionList(DbManager database)
         {
             //Making sure the list is empty
@@ -49,6 +49,7 @@ namespace quizMySQL
                 questionList.Add(qq);
             }
         }
+
         public bool checkClick(string letter)
         {
             //If clicked answer is correct
@@ -62,30 +63,37 @@ namespace quizMySQL
                 return false;
             }
         }
+
         public QuizQuestion getQuestion(int i)
         {
             return questionList[i];
         }
+
         public void nextQuestion()
         {
             currentQuestion++;
         }
+
         public void incrementPoints()
         {
             points++;
         }
+
         public string updateCurrentQuestionTxt()
         {
             return "Question " + (currentQuestion + 1) + " out of " + amountOfQuestions;
         }
+
         public int returnFinalResult()
         {
             return points;
         }
+
         public void restartQuiz(DbManager database)
         {
             currentQuestion = 0;
             populatingQuestionList(database);
         }
+
     }
 }

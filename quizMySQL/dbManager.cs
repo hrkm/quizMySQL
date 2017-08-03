@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -12,17 +11,19 @@ using Android.Widget;
 using MySql.Data.MySqlClient;
 using System.Data;
 
-namespace quizMySQL.DataBase
+namespace QuizMySQL.DataBase
 {
     public class DbManager
     {
         public MySqlCommand cmd { get; set; }
         public MySqlConnection con { get; set; }
+
         public DbManager(string dbInfo)
         {
             //Connecting to database
             con = new MySqlConnection(dbInfo);
         }
+
         public void add(string question, string answerA, string answerB, string answerC, string answerD, string corrAnswer)
         {
             if (con.State == ConnectionState.Closed)
@@ -39,6 +40,7 @@ namespace quizMySQL.DataBase
             cmd.Parameters.AddWithValue("@corrAnswer", corrAnswer);
             cmd.ExecuteNonQuery();
         }
+
         public MySqlCommand findRndQuestion()
         {
             if (con.State == ConnectionState.Closed)

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -11,7 +10,7 @@ using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
 
-namespace quizMySQL
+namespace QuizMySQL
 {
     [Activity(Label = "ResultActivity")]
     public class ResultActivity : Activity
@@ -19,7 +18,6 @@ namespace quizMySQL
         TextView text;
         Button mainPage;
         Button playAgain;
-
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -33,17 +31,20 @@ namespace quizMySQL
             mainPage.Click += delegate { goToMainPage();  };
             playAgain.Click += delegate { goToGame(); };
         }
+
         private void assignViewToVar()
         {
             text = FindViewById<TextView>(Resource.Id.quizResult);
             mainPage = FindViewById<Button>(Resource.Id.buttonMainPage);
             playAgain = FindViewById<Button>(Resource.Id.buttonPlayAgain);
         }
+
         private void goToMainPage()
         {
             var intent = new Intent(this, typeof(MainPageActivity));
             StartActivity(intent);
         }
+
         private void goToGame()
         {
             var intent = new Intent(this, typeof(GameActivity));

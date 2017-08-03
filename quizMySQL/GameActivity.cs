@@ -4,16 +4,16 @@ using Android.Widget;
 using Android.OS;
 using System.IO;
 using System.Data;
-using quizMySQL;
+using QuizMySQL;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System;
-using quizMySQL.DataBase;
+using QuizMySQL.DataBase;
 using Newtonsoft.Json;
 
 
-namespace quizMySQL
+namespace QuizMySQL
 {
     [Activity(Label = "GameActivity", MainLauncher = false, Icon = "@drawable/icon")]
     public class GameActivity : Activity
@@ -37,15 +37,17 @@ namespace quizMySQL
             game.populatingQuestionList(game.database);
             assignViewToVar();
             refreshQuestionPage();
-            buttonA.Click += delegate { btn1Click(); };
-            buttonB.Click += delegate { btn2Click(); };
-            buttonC.Click += delegate { btn3Click(); };
-            buttonD.Click += delegate { btn4Click(); };
+            buttonA.Click += delegate { btnClick("A"); };
+            buttonB.Click += delegate { btnClick("B"); };
+            buttonC.Click += delegate { btnClick("C"); };
+            buttonD.Click += delegate { btnClick("D"); };
         }
+
         public void refreshQuestionPage()
         {
             assignValToVar(game.currentQuestion);
         }
+
         private void assignViewToVar()
         {
             questionNoTxt = FindViewById<TextView>(Resource.Id.textView2);
@@ -55,6 +57,7 @@ namespace quizMySQL
             buttonC = FindViewById<Button>(Resource.Id.button3);
             buttonD = FindViewById<Button>(Resource.Id.button4);
         }
+
         private void assignValToVar(int questionNumber)
         {
             questionNoTxt.Text = game.updateCurrentQuestionTxt();
@@ -65,10 +68,10 @@ namespace quizMySQL
             buttonD.Text = game.getQuestion(questionNumber).answerD;
 
         }
-#region btnsClick
-        private void btn1Click()
-        {   //Checking if A is correct
-            if(game.checkClick("A"))
+
+        private void btnClick(string letter)
+        {   //Checking if answer is correct
+            if(game.checkClick(letter))
             {
                 //Increment general points
                 game.incrementPoints();
@@ -107,142 +110,9 @@ namespace quizMySQL
                 }
             }
         }
-        private void btn2Click()
-        {   //Checking if B is correct
-            if (game.checkClick("B"))
-            {
-                //Increment general points
-                game.incrementPoints();
-                //IF this was last question
-                if (game.amountOfQuestions == (game.currentQuestion+1))
-                {
-                    //Show the dialog box
-                    //Restart Quiz
-                    endOfQuiz();
-                    refreshQuestionPage();
-                }
-                //If this wasnt last question
-                else
-                {
-                    //pick next question
-                    game.nextQuestion();
-                    refreshQuestionPage();
-                }
-            }
-            else
-            {
-                if (game.amountOfQuestions == (game.currentQuestion + 1))
-                {
-                    //Show the dialog box
-                    //Restart Quiz
-                    endOfQuiz();
-                    refreshQuestionPage();
-                }
-                //If this wasnt last question
-                else
-                {
-                    //pick next question
-                    game.nextQuestion();
-                    refreshQuestionPage();
-                }
-            }
-        }
-        private void btn3Click()
-        {   //Checking if C is correct
-            if (game.checkClick("C"))
-            {
-                //Increment general points
-                game.incrementPoints();
-                //IF this was last question
-                if (game.amountOfQuestions == (game.currentQuestion + 1))
-                {
-                    //Show the dialog box
-                    //Restart Quiz
-                    endOfQuiz();
-                    refreshQuestionPage();
-                }
-                //If this wasnt last question
-                else
-                {
-                    //pick next question
-                    game.nextQuestion();
-                    refreshQuestionPage();
-                }
-            }
-            else
-            {
-                if (game.amountOfQuestions == (game.currentQuestion + 1))
-                {
-                    //Show the dialog box
-                    //Restart Quiz
-                    endOfQuiz();
-                    refreshQuestionPage();
-                }
-                //If this wasnt last question
-                else
-                {
-                    //pick next question
-                    game.nextQuestion();
-                    refreshQuestionPage();
-                }
-            }
-        }
-        private void btn4Click()
-        {   //Checking if D is correct
-            if (game.checkClick("D"))
-            {
-                //Increment general points
-                game.incrementPoints();
-                //IF this was last question
-                if (game.amountOfQuestions == (game.currentQuestion + 1))
-                {
-                    //Show the dialog box
-                    //Restart Quiz
-                    endOfQuiz();
-                    refreshQuestionPage();
-                }
-                //If this wasnt last question
-                else
-                {
-                    //pick next question
-                    game.nextQuestion();
-                    refreshQuestionPage();
-                }
-            }
-            else
-            {
-                if (game.amountOfQuestions == (game.currentQuestion + 1))
-                {
-                    //Show the dialog box
-                    //Restart Quiz
-                    endOfQuiz();
-                    refreshQuestionPage();
-                }
-                //If this wasnt last question
-                else
-                {
-                    //pick next question
-                    game.nextQuestion();
-                    refreshQuestionPage();
-                }
-            }
-        }
-#endregion btnsClick
+
         public void endOfQuiz()
         {
-            /*
-            //creating alter dialog
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.SetTitle("End of Quiz");
-            builder.SetMessage("Your score is " + game.returnFinalResult());
-            builder.SetNeutralButton("Play Again", delegate
-            {
-                game.restartQuiz();
-                refreshQuestionPage();
-                game.populatingQuestionList();
-            });
-            builder.Show();
-            */
             var intent = new Intent(this, typeof(ResultActivity));
             var json = JsonConvert.SerializeObject(game);
             intent.PutExtra("game", json);

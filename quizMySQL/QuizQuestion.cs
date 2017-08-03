@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using quizMySQL.DataBase;
+using QuizMySQL.DataBase;
 using MySql.Data.MySqlClient;
 
-namespace quizMySQL
+namespace QuizMySQL
 {
     class QuizQuestion
     {
@@ -23,8 +22,10 @@ namespace quizMySQL
         public string answerC { get; set; }
         public string answerD { get; set; }
         public string corrAnswer { get; set; }
+
         public QuizQuestion(MySqlDataReader reader)
         {
+            //If reader is closed open it.
             if (!reader.IsClosed)
             {
                 reader.Read();
@@ -36,7 +37,6 @@ namespace quizMySQL
             answerC = reader.GetValue(4).ToString();
             answerD = reader.GetValue(5).ToString();
             corrAnswer = reader.GetValue(6).ToString();
-
             reader.Close();
         }
     }
