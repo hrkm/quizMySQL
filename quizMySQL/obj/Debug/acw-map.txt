@@ -1,0 +1,12 @@
+quizMySQL.GameActivity, quizMySQL;md58cea07943ff5d528678ffe942de20db1.GameActivity
+quizMySQL.GameActivity, quizMySQL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md58cea07943ff5d528678ffe942de20db1.GameActivity
+quizMySQL.GameActivity;md58cea07943ff5d528678ffe942de20db1.GameActivity
+quizmysql.GameActivity;md58cea07943ff5d528678ffe942de20db1.GameActivity
+quizMySQL.MainPageActivity, quizMySQL;md58cea07943ff5d528678ffe942de20db1.MainPageActivity
+quizMySQL.MainPageActivity, quizMySQL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md58cea07943ff5d528678ffe942de20db1.MainPageActivity
+quizMySQL.MainPageActivity;md58cea07943ff5d528678ffe942de20db1.MainPageActivity
+quizmysql.MainPageActivity;md58cea07943ff5d528678ffe942de20db1.MainPageActivity
+quizMySQL.ResultActivity, quizMySQL;md58cea07943ff5d528678ffe942de20db1.ResultActivity
+quizMySQL.ResultActivity, quizMySQL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md58cea07943ff5d528678ffe942de20db1.ResultActivity
+quizMySQL.ResultActivity;md58cea07943ff5d528678ffe942de20db1.ResultActivity
+quizmysql.ResultActivity;md58cea07943ff5d528678ffe942de20db1.ResultActivity

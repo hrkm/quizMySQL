@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quizMySQL", "quizMySQL\quizMySQL.csproj", "{2EAAF260-6935-4A9E-9E95-334A140DD861}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizMySQL", "quizMySQL\QuizMySQL.csproj", "{2EAAF260-6935-4A9E-9E95-334A140DD861}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
